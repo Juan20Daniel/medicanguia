@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "react-app",
-    "slug": "react-app",
+    "name": "medicanguia",
+    "slug": "medicanguia",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.juandaniel200031.reactapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

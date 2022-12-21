@@ -40,18 +40,6 @@ export const { ids, styles } = StyleSheet.create({
         borderTopLeftRadius: 22,
         borderTopRightRadius: 22,
     },
-    staidPublication: {
-        width: '100%', 
-        height: 70, 
-        position: 'absolute', 
-        bottom: 0,
-        '@media(min-width:400px)' : {
-            height: 110, 
-        },
-        '@media(min-width:500px)' : {
-            height: 150, 
-        }
-    },
     ole: {
         width: '100%', 
         height: 50, 

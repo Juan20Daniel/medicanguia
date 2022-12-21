@@ -2,40 +2,24 @@ import { View, Text, ScrollView } from 'react-native';
 import Network from '../network/Network';
 import { ids, styles } from './networksStyles';
 import TitlesMoreInfo from '../titlesMoreInfo/TitlesMoreInfo';
-const Networks = ({ colorScheme }) => {
+const Networks = ({ networks, colorScheme }) => {
     return (
         <View style={styles.networcks}>
             <View style={styles.center}>
                 <TitlesMoreInfo value="Localizar" />
                 <ScrollView style={styles.horizontalScroll} horizontal={true}>
-                    <Network
-                        colorScheme={colorScheme}
-                        active={true}
-                        iconNetwork={require('../../assets/iconWhatsapp.png')}
-                        to="https://wa.link/bbjsr8"
-                        name="Whatsapp"
-                    />
-                    <Network 
-                        colorScheme={colorScheme} 
-                        active={false}
-                        iconNetwork={require('../../assets/iconFaceBlue.png')}
-                        to="https://www.facebook.com"
-                        name="Facebook"
-                    />
-                    <Network 
-                        colorScheme={colorScheme} 
-                        active={false}
-                        iconNetwork={require('../../assets/iconFaceBlue.png')}
-                        to="https://www.instagram.com"
-                        name="Instagram"
-                    />
-                    <Network 
-                        colorScheme={colorScheme} 
-                        active={false}
-                        iconNetwork={require('../../assets/iconFaceBlue.png')}
-                        to="https://www.instagram.com"
-                        name="Instagram"
-                    />
+                    {networks.map(network => {
+                        return (
+                            <Network
+                                key={network.idNetwork}
+                                colorScheme={colorScheme}
+                                active={network.active}
+                                iconNetwork={network.icon}
+                                to={network.to}
+                                name={network.name}
+                            />
+                        );
+                    })}
                 </ScrollView>
             </View>
         </View>

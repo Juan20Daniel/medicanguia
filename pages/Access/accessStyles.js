@@ -1,14 +1,14 @@
 import StyleSheet from 'react-native-media-query';
-
+import { styles as auxStyles } from '../../auxStyles';
 export const { ids, styles } = StyleSheet.create({
     formlogin: {
-        height: '30%', //30
+        height: '30%',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center'
     },
     formSigin: {
-        height: '40%', //30
+        height: '40%',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center'
@@ -18,16 +18,12 @@ export const { ids, styles } = StyleSheet.create({
         width: '100%'
     },
     boxQuestionLogin: {
-        width: '100%',
-        maxWidth: 600,
-        height: '18%', //18
-        justifyContent: 'center'
+        ...auxStyles.boxQuestion,
+        height: '18%',
     },
     boxQuestionSigin: {
-        width: '100%',
-        maxWidth: 600,
-        height: '10%', //18
-        justifyContent: 'center'
+        ...auxStyles.boxQuestion,
+        height: '10%',
     },
     question: {
         textAlign: 'center',
@@ -40,7 +36,9 @@ export const { ids, styles } = StyleSheet.create({
         color: '#3C95FF',
         fontSize: 12,
         textDecorationLine: 'underline',
-        marginLeft: 4
+        marginLeft: 4,
+        '@media(min-width: 450px)' : {
+            fontSize: 15
+        }
     }
 });
-//70%

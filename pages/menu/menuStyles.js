@@ -6,9 +6,9 @@ export const { ids, styles } = StyleSheet.create({
         backgroundColor: '#fff',
     },
     contentMenu: {
+        position: 'relative',
         width: '100%',
         minWidth: 320,
-        minHeight: 500,
         alignItems: 'center',
         paddingBottom: 50
     },
@@ -95,5 +95,59 @@ export const { ids, styles } = StyleSheet.create({
         '@media(min-width: 500px)' : {
             width: 442,
         }
+    },
+    boxMessage: {
+        width: '80%',
+        maxWidth: 280,
+        marginTop: 30,
+        alignItems:'center',
+        '@media(min-width:380px)' : {
+            maxWidth: 300,
+            marginTop: 40,
+        }
+    },
+    message: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#858585',
+        '@media(min-width: 380px)' : {
+            fontSize: 25
+        },
+        '@media(min-width: 480px)' : {
+            fontSize: 30
+        }
+    },
+    btnBack: {
+        backgroundColor: '#D9D9D9',
+        paddingHorizontal: 30,
+        paddingVertical: 5,
+        borderRadius: 7,
+        marginTop: 15,
+        '@media(min-width: 380px)' : {
+            paddingHorizontal: 40,
+            paddingVertical: 10,
+        },
+    },
+    textBtnBack: {
+        color: '#545252',
+        fontSize: 10,
+        '@media(min-width: 380px)' : {
+            fontSize: 13,
+        },
+    },
+    boxBtnCloseSesion: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 120,
+        borderTopWidth: 1,
+        borderColor: '#C5C5C5'
+    },
+    centerBtn: {
+        width: 300,
+        height: 25,
     }
 });

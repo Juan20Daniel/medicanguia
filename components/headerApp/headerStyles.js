@@ -146,7 +146,7 @@ export const { ids, styles } = StyleSheet.create({
     boxNetworks: {
         position: 'absolute',
         width: '100%',
-        height: 40,
+        height: 35,
         bottom: 0,
         zIndex: 1,
         paddingHorizontal: 20,
@@ -159,6 +159,7 @@ export const { ids, styles } = StyleSheet.create({
         },
         '@media(min-width:600px)' : {
             paddingHorizontal: 40,
+            height: 65,
         }
     },
     networks: {
@@ -167,45 +168,6 @@ export const { ids, styles } = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between'
-    },
-    boxIconNetwork: {
-        display: 'flex',
-        flexDirection: 'row',
-        height: 20,
-        justifyContent: 'center',
-        marginTop: 5,
-        height: 25,
-        '@media(min-width:400px)' : {
-            marginTop: 15,
-        },
-    },
-    iconsNetwork: {
-        width: 20,
-        height: 20,
-        '@media(min-width:470px)' : {
-            width: 25,
-            height: 25,
-        },
-        '@media(min-width:600px)' : {
-            width: 30,
-            height: 30,
-        }
-    },
-    nameNetwork: {
-        color:'#fff',
-        fontSize: 10,
-        marginLeft: 7,
-        lineHeight: 20,
-        '@media(min-width:470px)' : {
-            marginLeft: 10,
-            fontSize: 12,
-            lineHeight: 25,
-        },
-        '@media(min-width:600px)' : {
-            marginLeft: 15,
-            fontSize: 14,
-            lineHeight: 30,
-        }
     },
     staidHeader: {
         position: 'absolute',

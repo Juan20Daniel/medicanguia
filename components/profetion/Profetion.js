@@ -1,6 +1,6 @@
 import { View, Text, Image } from 'react-native';
 import { ids, styles } from './profetionStyles';
-const Profetion = () => {
+const Profetion = ({ profetion }) => {
     return (
         <View style={styles.boxProfetion} dataSet={{media:ids.boxProfetion}}>
             <Image 
@@ -10,7 +10,7 @@ const Profetion = () => {
                 dataSet={{media:ids.iconProfetion}}
             />
             <Text style={styles.profetion} dataSet={{media:ids.profetion}}>
-                Dentista
+                {profetion}
             </Text>
         </View>
     );

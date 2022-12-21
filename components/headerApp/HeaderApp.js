@@ -1,6 +1,6 @@
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Dimensions } from 'react-native';
 import { ids, styles } from './headerStyles';
-import { A } from '@expo/html-elements';
+import HrefHeader from '../hrefHeader/HrefHeader';
 const HeaderApp = ({ colorScheme }) => {
     return (
         <View style={styles.header} dataSet={{ media:ids.header }}>
@@ -57,36 +57,21 @@ const HeaderApp = ({ colorScheme }) => {
                         </View>
                         <View style={styles.boxNetworks} dataSet={{media:ids.boxNetworks}}>
                             <View style={styles.networks}>
-                                <View style={styles.boxIconNetwork} dataSet={{media:ids.boxIconNetwork}}>
-                                    <Image 
-                                        source={require('../../assets/iconFacebook.png')} 
-                                        style={styles.iconsNetwork}
-                                        dataSet={{media:ids.iconsNetwork}}
-                                    />
-                                    <Text style={styles.nameNetwork} dataSet={{media:ids.nameNetwork}}>
-                                        <A href="https://www.facebook.com/">Facebook</A>
-                                    </Text>
-                                </View>
-                                <View style={styles.boxIconNetwork} dataSet={{media:ids.boxIconNetwork}}>
-                                    <Image 
-                                        source={require('../../assets/iconInstagram.png')} 
-                                        style={styles.iconsNetwork}
-                                        dataSet={{media:ids.iconsNetwork}}
-                                    />
-                                    <Text style={styles.nameNetwork} dataSet={{media:ids.nameNetwork}}>
-                                        <A href='https://www.instagram.com/'>Instagram</A>
-                                    </Text>
-                                </View>
-                                <View style={styles.boxIconNetwork} dataSet={{media:ids.boxIconNetwork}}>
-                                    <Image 
-                                        source={require('../../assets/iconWhatsapp.png')} 
-                                        style={styles.iconsNetwork}
-                                        dataSet={{media:ids.iconsNetwork}}
-                                    />
-                                    <Text style={styles.nameNetwork} dataSet={{media:ids.nameNetwork}}>
-                                        <A href='https://wa.link/bbjsr8'>Whatsapp</A>
-                                    </Text>
-                                </View>
+                                <HrefHeader 
+                                    href="https://www.facebook.com/"
+                                    icon={require('../../assets/iconFacebook.png')}
+                                    name="Facebook"
+                                />
+                                <HrefHeader 
+                                    href="https://www.instagram.com/"
+                                    icon={require('../../assets/iconInstagram.png')}
+                                    name="Instagram"
+                                />
+                                <HrefHeader 
+                                    href="https://wa.link/bbjsr8"
+                                    icon={require('../../assets/iconWhatsapp.png')}
+                                    name="Whatsapp"
+                                />
                             </View>
                         </View>
                         <Image 

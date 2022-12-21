@@ -11,6 +11,13 @@ export const { ids, styles } = StyleSheet.create({
         borderColor: '#C3C3C3',
         borderRadius: 6,
     },
+    iconPass: {
+        position: 'absolute',
+        top: 12,
+        right: 15,
+        width: 24,
+        height: 15,
+    },
     label: {
         position: 'absolute',
         top: -12,
@@ -21,6 +28,7 @@ export const { ids, styles } = StyleSheet.create({
     },
     input: {
         flex: 1,
-        paddingHorizontal: 10
-    }
+        paddingHorizontal: 10,
+        marginRight: 40
+    },
 })

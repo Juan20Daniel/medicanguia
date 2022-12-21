@@ -6,8 +6,9 @@ import MoreInfo from '../../components/moreInfo/MoreInfo';
 import Item from '../../components/items/Items';
 import InputAddComent from '../../components/inputAddComent/InputAddComent';
 import Comment from '../../components/comment/Comment';
-
+import { useSelector } from 'react-redux';
 const ModalMoreInfo = ({ navigation }) => {
+    const { allInfo } = useSelector(state => state.medicanSlice);
     // let colorScheme = useColorScheme();
     let colorScheme = 'light';
     return (
@@ -15,60 +16,62 @@ const ModalMoreInfo = ({ navigation }) => {
             <StatusBar backgroundColor="#fff" barStyle="dark-content" />
             <ScrollView style={styles.modalMoreInfo}>
                 <View style={styles.boxContent}>
-                    <HeaderMoreInfo colorScheme={colorScheme} navigation={navigation} />
-                    <Networks colorScheme={colorScheme} />
+                    <HeaderMoreInfo 
+                        colorScheme={colorScheme} 
+                        navigation={navigation} 
+                        infoHeader={allInfo.infoHeader}
+                    />
+                    <Networks networks={allInfo.networks} colorScheme={colorScheme} />
+                    <MoreInfo title="Todos los costos">
+                        {allInfo.otherCosts.map(cost => {
+                            return (
+                                <Item
+                                    key={cost.idOtherCost}
+                                    icon={cost.icon}
+                                    type="info"
+                                    title={cost.title}
+                                    value={cost.value}
+                                />
+                            );
+                        })}
+                    </MoreInfo>
                     <MoreInfo title="Mas información">
-                        <Item 
-                            icon={require('../../assets/iconAtiende.png')}
-                            type="info"
-                            title="Atiende a"
-                            value="adultos, niños de cualquier edad"
-                        />
-                        <Item
-                            icon={require('../../assets/iconCalendar.png')}
-                            type="info"
-                            title="Horario"
-                            value="de lunes a viernes"
-                        />
-                        <Item
-                            icon={require('../../assets/iconFormPaiment.png')}
-                            type="info"
-                            title="Formas de pago"
-                            value="efectivo"
-                        />
+                        {allInfo.moreInfo.map(info => {
+                            return (
+                                <Item
+                                    key={info.idMoreInfo}
+                                    icon={info.icon}
+                                    type="info"
+                                    title={info.title}
+                                    value={info.value}
+                                />
+                            );
+                        })}
                     </MoreInfo>
                     <MoreInfo title="Experiencia">
-                        <Item
-                            icon={require('../../assets/iconAboutMe.png')}
-                            type="experience"
-                            title="Algo sobre mi"
-                            typeValue="paragraph"
-                            value="Alfonso Romero, 
-                            psicólogo clínico. Mi vocación 
-                            como psicoterapeuta es ayudarte 
-                            desde la primera consulta, en 
-                            la cual nos enfocaremos en 
-                            analizar tus ..."
-                        />
-                        <Item
-                            icon={require('../../assets/iconSpeciality.png')}
-                            type="experience"
-                            title="Me especializo en"
-                            typeValue="list"
-                            value="de lunes a viernes"
-                        />
-                        <Item
-                            icon={require('../../assets/iconStudes.png')}
-                            type="experience"
-                            title="Formas de pago"
-                            typeValue="list"
-                            value="efectivo"
-                        />
+                        {allInfo.experience.map(experience => {
+                            return (
+                                <Item
+                                    key={experience.idExperience}
+                                    icon={experience.icon}
+                                    type="experience"
+                                    title={experience.title}
+                                    typeValue={experience.typeValue}
+                                    value={experience.value}
+                                />
+                            );
+                        })}
                     </MoreInfo>
                     <MoreInfo title="Comentarios">
-                       <InputAddComent />
-                        <Comment />
-                        <Comment />
+                        <InputAddComent />
+                        {allInfo.comments.map(comment => {
+                            return (
+                                <Comment 
+                                    key={comment.idComment}
+                                    comment={comment}
+                                />
+                            );
+                        })}
                     </MoreInfo>
                 </View>
             </ScrollView>

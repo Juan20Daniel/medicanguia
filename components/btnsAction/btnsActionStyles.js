@@ -1,8 +1,5 @@
 import StyleSheet from 'react-native-media-query';
 export const { ids, styles } = StyleSheet.create({
-    btnsAccess: {
-       width: '100%'
-    },
     btn: {
         width: '100%',
         height: 25,
@@ -10,18 +7,18 @@ export const { ids, styles } = StyleSheet.create({
         borderRadius: 50,
         justifyContent: 'center'
     },
-    btnOK: {
+    btnBlue: {
         backgroundColor: '#3C95FF',
     },
-    textBtnOk: {
+    textWhite: {
         color: '#fff',
         textAlign: 'center'
     },
-    btnCancel: {
+    btnWhite: {
         borderWidth: 1,
         borderColor: '#3C95FF',
     },
-    textBtnCancel: {
+    textBlue: {
         color: '#3C95FF',
         textAlign: 'center'
     },

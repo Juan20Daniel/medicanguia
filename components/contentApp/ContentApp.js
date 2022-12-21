@@ -12,18 +12,14 @@ const ContentApp = ({ colorScheme, dataOrdered, navigation }) => {
                     return (
                         <Publication
                             key={index}
+                            item={item}
                             colorSchema={colorScheme} 
-                            staid="oleRight"
-                            styleStaid="ole"
                             navigation={navigation}
                         />
                     );
                 })}
                 <View style={styles.boxTestAnuncio}>
-                    <View 
-                        style={styles.centerAnuntio}
-                        dataSet={{media:ids.centerAnuntio}}
-                    >
+                    <View style={styles.centerAnuntio} dataSet={{media:ids.centerAnuntio}}>
                         <Image 
                             source={require('../../assets/testAnuncio.png')}
                             style={styles.testAnuncio}

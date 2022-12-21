@@ -1,21 +1,19 @@
 import { View, Text } from 'react-native';
 import { ids, styles } from './commentStyles';
-const Comment = () => {
+const Comment = ({ comment }) => {
     return (
         <View style={styles.comment}>
             <View style={styles.headeComment}>
                 <View style={styles.circleComment}>
-                    <Text style={styles.initial}>A</Text>
+                    <Text style={styles.initial}>{comment.name[0]}</Text>
                 </View>
                 <View style={styles.boxInfoComment}>
-                    <Text style={styles.name}>Aaron Gonzales</Text>
-                    <Text style={styles.date}>Fechade publicación: 15/10/22</Text>
+                    <Text style={styles.name}>{comment.name}</Text>
+                    <Text style={styles.date}>Fechade publicación: {comment.dateComent}</Text>
                 </View>
             </View>
             <Text style={styles.message}>
-                Excelente doctor, te hace sentir 
-                muy seguro y con mucha confianza, 
-                te explica claramente su técnica.
+                {comment.message}
             </Text>
         </View>
     );

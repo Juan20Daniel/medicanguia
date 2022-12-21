@@ -2,13 +2,14 @@ import { View, Text, Image, Pressable } from 'react-native';
 import { ids, styles } from './publicationStyles';
 import HeaderPublication from '../headerPublication/HeaderPublication';
 import Profetion from '../profetion/Profetion';
-const staids = {
-    deformLeft:require('../../assets/deformLeft.png'),
-    deformRigth:require('../../assets/deformRigth.png'),
-    oleLeft:require('../../assets/oleLeft.png'),
-    oleRight:require('../../assets/oleRight.png'),
-}
-const Publication = ({ colorSchema, staid, styleStaid, navigation }) => {
+import { useDispatch } from 'react-redux';
+import { getMoreInfo } from '../../redux/medicanSlice';
+const Publication = ({ item, colorSchema, navigation }) => {
+    const dispatch = useDispatch();
+    const goToMoreInfo = () => {
+        dispatch(getMoreInfo(item));
+        navigation.navigate('MoreInfo')
+    }
     return (
         <View
             style={{...styles.publication, backgroundColor:colorSchema === "dark"?'#000':"#fff"}}
@@ -16,30 +17,30 @@ const Publication = ({ colorSchema, staid, styleStaid, navigation }) => {
         >
             <View style={styles.boxImgPublication} dataSet={{media:ids.boxImgPublication}}>
                 <Image
-                    source={require('../../assets/imgDentista.png')}
+                    source={item.img}
                     style={styles.imgPublication}
                     resizeMode="cover"
                 />
                 <Image
-                    source={staids[staid]}
-                    style={styles[styleStaid]}
-                    dataSet={{media:ids[styleStaid]}}
+                    source={require('../../assets/oleRight.png')}
+                    style={styles.ole}
+                    dataSet={{media:ids.ole}}
                     resizeMode="cover"
                 />
             </View>
             <View style={styles.containerPublication} dataSet={{media:ids.containerPublication}}>
-                <HeaderPublication />
-                <Profetion />
+                <HeaderPublication item={item} />
+                <Profetion profetion={item.profetion} />
                 <View style={styles.contentPublication} dataSet={{media:ids.contentPublication}}>
                     <View style={styles.boxPrice}>
                         <Text style={styles.price} dataSet={{media:ids.price}}>
-                            $150.00<Text style={styles.timeCost}> Por consulta</Text>
+                            ${item.price}.00<Text style={styles.timeCost}> Por consulta</Text>
                         </Text>
                     </View>
                     <Pressable
                         style={styles.btnMoreInfo}
                         dataSet={{media:ids.btnMoreInfo}}
-                        onPress={() => navigation.navigate('MoreInfo')}
+                        onPress={() => goToMoreInfo()}
                     >
                         <Text
                             style={styles.textBtnMoreInfo} 
@@ -50,11 +51,11 @@ const Publication = ({ colorSchema, staid, styleStaid, navigation }) => {
                     </Pressable>
                 </View>
                 <Text style={styles.numPhone} dataSet={{media:ids.numPhone}}>
-                    No. de cédula: 314 109 3449
+                    No. de celular: {item.numPhone}
                 </Text>
                 <View style={styles.footerPublication}>
                     <Text style={styles.datePublication} dataSet={{media:ids.datePublication}}>
-                        Fechade publicación: 15/10/22
+                        Fecha de publicación: {item.dataPublicate}
                     </Text>
                     <View style={styles.boxComents}>
                         <Image

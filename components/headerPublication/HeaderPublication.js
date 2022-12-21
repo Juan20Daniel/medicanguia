@@ -1,11 +1,21 @@
 import { View, Text, Image, Pressable } from 'react-native';
 import { ids, styles } from './headerPublicationStyles';
-const HeaderPublication = () => {
+const HeaderPublication = ({ item }) => {
     return (
         <View style={styles.headerPublicatrion}>
             <View style={styles.boxNameClient}>
-                <Text style={styles.nameclient} dataSet={{media:ids.nameclient}}>Mtro. Alfonso Romero</Text>
-                <Text style={styles.nameclient} dataSet={{media:ids.nameclient}}>Alcántara</Text>
+                <Text 
+                    style={styles.nameclient} 
+                    dataSet={{media:ids.nameclient}}
+                >
+                        {item.name} {item.firstname}
+                </Text>
+                <Text 
+                    style={styles.nameclient} 
+                    dataSet={{media:ids.nameclient}}
+                >
+                    {item.lastname}
+                </Text>
             </View>
             <Pressable style={styles.btnSavePublication}>
                 <Image 

@@ -6,36 +6,27 @@ import { ids, styles } from './homeStylers';
 import HeaderApp from '../../components/headerApp/HeaderApp';
 import ContentApp from '../../components/contentApp/ContentApp';
 import FooterApp from '../../components/footerApp/FooterApp';
-import Menu from '../../components/menu/Menu';
 import { dataContent } from '../../data';
 
 const Home = ({ navigation }) => {
   const [ loadData, setLoadData ] = useState({ visible:true, animation:'none'});
   const [ user, setUser ] = useState(null);
   const [ dataOrdered, setDataOrdered ] = useState([]);
-  const [ menu, setMenu ] = useState(false);
   useEffect(() => {
-    const test = dataContent.sort((a, b) => {
+    const orderData = dataContent.sort((a, b) => {
       return a.category - b.category
     })
-    setDataOrdered(test)
+    setDataOrdered(orderData)
   },[])
-  useEffect(() => {
-    if(dataOrdered.length !== 0) {
-      setLoadData({ visible:false, animation:'slide'});
-    }
-  },[dataOrdered])
   // let colorScheme = useColorScheme();
   let colorScheme = 'light';
   return (
     <View style={styles.container}>
-      <LoadData loadData={loadData} setUser={setUser} />
+      <LoadData loadData={loadData} setLoadData={setLoadData} />
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <SafeAreaView>
         <Navbar 
           navigation={navigation}
-          menu={menu} 
-          setMenu={setMenu}
           user={user}
         />
         <ScrollView>
@@ -47,7 +38,6 @@ const Home = ({ navigation }) => {
           />
           <FooterApp /> 
         </ScrollView>
-        <Menu menu={menu} setMenu={setMenu} />
       </SafeAreaView>
     </View>
   );

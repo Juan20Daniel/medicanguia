@@ -5,11 +5,13 @@ export const { ids, styles } = StyleSheet.create({
         width: '100%',
         height: 40,
         marginBottom: 20,
-        maxWidth: 350, 
+        maxWidth: 350,
         backgroundColor: '#fff',
         borderWidth: 1,
-        borderColor: '#C3C3C3',
         borderRadius: 6,
+    },
+    invalid: {
+        borderColor:"red"
     },
     iconPass: {
         position: 'absolute',
@@ -22,7 +24,6 @@ export const { ids, styles } = StyleSheet.create({
         position: 'absolute',
         top: -12,
         left: 15,
-        color: '#A6A5A5',
         backgroundColor: '#fff',
         paddingHorizontal: 2
     },

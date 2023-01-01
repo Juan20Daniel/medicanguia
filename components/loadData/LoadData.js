@@ -5,25 +5,21 @@ import LayoutAccess from '../layoutAccess/LayoutAccess';
 import useGetHeight from '../../hooks/useGetHeight';
 import { verificUser } from '../../functions/functions';
 import { useNetInfo } from '../../hooks/useNetInfo';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux/medicanSlice';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoadData = ({ loadData, setLoadData }) => {
     let valueHeight = useGetHeight();
     const { isConnected, checkConnection } = useNetInfo();
     const dispatch = useDispatch();
-    const { token }  = useSelector(state => state.medicanSlice);
-    useEffect(() => {
-        const getUser = async () => {
-            const result = await verificUser();
-            dispatch(setToken(result));
-        }
-        getUser();
-    },[]);
+    const getUser = async () => {
+        const result = await verificUser();
+        dispatch(setToken(result));
+    }
     useEffect(() => {
         checkConnection();
         if(isConnected) {
+            getUser();
             setLoadData({ visible:false, animation:'slide'});
         }
     },[isConnected]);

@@ -1,26 +1,35 @@
 import { useState } from "react";
 export const useApi = () => {
-    const [ data, setdata ] = useState(null);
-    const [ isPending, setIsPending ] = useState(true);
-    const [ error, setError ] = useState(null);
-    const getData = async (url) => {
-        try {
-            let result = await fetch(url);
-            if(!result.ok) {
-                throw {
-                    err:true,
-                    status:result.status,
-                    statusText:!result.statusText ? "Ocurrio un error" : result.statusText
-                }
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [ response, setResponse ] = useState(null);
+    const [ err, setErr ] = useState(false);
+
+    const requestHTTP = (type, url, data) => {
+        setIsLoading(true);
+        const options = {
+            method:type,
+            body:JSON.stringify(data) || false,
+            headers: {
+                "Content-Type":"application/json"
             }
-            let dataJson = await result.json();
-            setError({ err:false });
-            setdata(dataJson);
-            setIsPending(false);
-        } catch (err) {
-            setError({ err:err });
-            setIsPending(true);
         }
+        if(!options.body) delete options.body;
+        fetch(url, options).then(res => {
+            if(res.ok) {
+                res.json().then(data => {
+                    setErr(false);
+                    setResponse(data);
+                    setIsLoading(false);
+                })
+                return true;
+            }
+            res.json().then(data => {
+                setErr(true);
+                setResponse(data);
+                setIsLoading(false);
+            })
+        });
     }
-    return { data, isPending, error, getData };
+
+    return { requestHTTP, response, isLoading, err }
 }

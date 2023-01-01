@@ -8,6 +8,7 @@ import { closeSession } from '../../redux/medicanSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const Menu = ({ navigation }) => {
     const { token } = useSelector((state) => state.medicanSlice);
+    console.log(token)
     const dispatch = useDispatch();
     const valueHeight = useGetHeight();
     const initSecion = () =>  navigation.navigate('Access', { screen:"login" });
@@ -62,12 +63,14 @@ const Menu = ({ navigation }) => {
                                 typeText="textWhite"
                                 value="INICIAR SESIÓN"
                                 action={initSecion}
+                                simple={false}
                             />
                             <BtnAction
                                 typeBtn="btnWhite"
                                 typeText="textBlue"
                                 value="CREAR CUENTA"
                                 action={createCount}
+                                simple={false}
                             />
                         </View>
                     </>

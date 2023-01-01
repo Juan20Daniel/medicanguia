@@ -40,5 +40,19 @@ export const { ids, styles } = StyleSheet.create({
         '@media(min-width: 450px)' : {
             fontSize: 15
         }
+    },
+    boxInfoHelp: {
+        minWidth: 300,
+        maxWidth: 450,
+        width: '100%',
+    },
+    titleInfoHelp: {
+        fontSize: 15,
+        textAlign: 'center'
+    },
+    iconInfoHelp: {
+        color:'#3C95FF',
+        fontSize: 30,
+        fontWeight: 'bold'
     }
 });

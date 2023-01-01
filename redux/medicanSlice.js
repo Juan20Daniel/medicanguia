@@ -9,10 +9,10 @@ const medicanSlice = createSlice({
     },
     reducers: {
         setToken: (state, action) => {
-            state.token[0] = action.payload;
+            state.token[0] = {user:action.payload};
         },
         closeSession: (state) => {
-            state.token[0] = { user:false }
+            state.token[0].user = false;
         },
         getMoreInfo: (state, action) => {
             const { idPublication } = action.payload;

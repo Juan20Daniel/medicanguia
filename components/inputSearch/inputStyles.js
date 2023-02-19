@@ -13,7 +13,7 @@ export const { ids, styles } = StyleSheet.create({
         height: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#E1DFDF',
+        backgroundColor: '#D9D9D9',
         borderTopLeftRadius: 6,
         borderBottomLeftRadius: 6
     },
@@ -26,7 +26,7 @@ export const { ids, styles } = StyleSheet.create({
         flex: 1,
         height: 30,
         borderWidth: 1,
-        color: '#E1DFDF',
+        color: '#D9D9D9',
         borderColor: "#E1DFDF",
         borderRadius: 5,
         borderTopLeftRadius: 0,

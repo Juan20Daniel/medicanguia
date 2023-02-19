@@ -8,7 +8,6 @@ import { closeSession } from '../../redux/medicanSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const Menu = ({ navigation }) => {
     const { token } = useSelector((state) => state.medicanSlice);
-    console.log(token)
     const dispatch = useDispatch();
     const valueHeight = useGetHeight();
     const initSecion = () =>  navigation.navigate('Access', { screen:"login" });
@@ -18,7 +17,7 @@ const Menu = ({ navigation }) => {
         dispatch(closeSession());
     }
     const deleteStorage = async () => {
-        await AsyncStorage.removeItem('token')
+        await AsyncStorage.removeItem('token');
     }
     return (
         <ScrollView style={styles.menu}>

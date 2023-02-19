@@ -5,7 +5,7 @@ export const { ids, styles } = StyleSheet.create({
         minHeight: 166,
         alignItems: 'center',
         paddingVertical: 45,
-        marginTop: 10,
+        marginTop: 40,
         backgroundColor: '#fff',
         shadowColor: '#000',
         shadowOffset: {
@@ -21,13 +21,5 @@ export const { ids, styles } = StyleSheet.create({
     ilustrationSearch: {
         width: 210,
         height: 166,
-        '@media(min-width: 400px)' : {
-            width: 270,
-            height: 226,
-        },
-        '@media(min-width: 500px)' : {
-            width: 330,
-            height: 296,
-        }
     }
 });

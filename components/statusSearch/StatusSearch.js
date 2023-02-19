@@ -1,10 +1,10 @@
 import { View, Image } from "react-native";
 import { ids, styles } from "./statusStyles";
-const StatusSearch = () => {
+const StatusSearch = ({ ilustration }) => {
     return (
         <View style={styles.statusSearch}>
             <Image 
-                source={require('../../assets/ilustrationSearch.png')}
+                source={ilustration}
                 resizeMode="contain"
                 style={styles.ilustrationSearch}
                 dataSet={{media:ids.ilustrationSearch}}

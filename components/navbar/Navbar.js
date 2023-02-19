@@ -1,6 +1,6 @@
 import { View, Image, Pressable } from 'react-native';
 import { ids, styles } from './navbarStyles';
-const Navbar = ({navigation, user }) => {
+const Navbar = ({ navigation }) => {
     return (
         <View style={styles.navbar}>
             <View style={styles.nav_center}>
@@ -18,7 +18,7 @@ const Navbar = ({navigation, user }) => {
                             resizeMode="contain"
                         />
                     </Pressable>
-                    <Pressable style={styles.btn} onPress={() => navigation.navigate('Menu', { user:user })}>
+                    <Pressable style={styles.btn} onPress={() => navigation.navigate('Menu')}>
                         <Image
                             source={require('../../assets/iconMenu.png')}
                             style={styles.iconMenu}

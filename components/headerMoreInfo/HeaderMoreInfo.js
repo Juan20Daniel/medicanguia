@@ -2,11 +2,12 @@ import { View, Text, Image, Pressable } from "react-native";
 import { ids, styles } from './headerMoreInfoStyles';
 import HeaderPublication from "../headerPublication/HeaderPublication";
 import Profetion from "../profetion/Profetion";
+import { resetDate } from "../../functions/functions";
 const HeaderMoreInfo = ({ colorScheme, navigation, infoHeader }) => {
     return (
         <View style={styles.contentHeaderInfo}>
             <Image 
-                source={require('../../assets/imgDentista.png')} 
+                source={`http://localhost:3000/${infoHeader.url}`}
                 style={styles.imgPublication}
                 dataSet={{media:ids.imgPublication}}
             />
@@ -50,7 +51,7 @@ const HeaderMoreInfo = ({ colorScheme, navigation, infoHeader }) => {
                                 </Text>
                             </View>
                             <Text style={{color:"#fff"}}>
-                                Fecha de publicación: {infoHeader.dataPublicate}
+                                Fecha de publicación: {resetDate(infoHeader.dataPublicate)}
                             </Text>
                         </View>
                     </View>

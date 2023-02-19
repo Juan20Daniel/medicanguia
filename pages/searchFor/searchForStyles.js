@@ -1,9 +1,12 @@
 import StyleSheet from 'react-native-media-query';
 export const { ids, styles } = StyleSheet.create({
+    search: {
+        minWidth: 300,
+        width:'100%',
+        minHeight: 720,
+    },
     modalSearch: {
-        width: '100%',
-        height: '100%',
-        backgroundColor:"#D7F5FF",
+        flex: 1
     },
     backSearch: {
         width: '100%',
@@ -67,23 +70,64 @@ export const { ids, styles } = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    boxSelectCategori: {
+        flexDirection: 'row',
+        height: 28,
+        alignItems: 'center'
+    },
+    btnSelectCategory: {
+        height: 28,
+        paddingHorizontal: 15,
+        borderWidth: 1,
+        borderColor: '#C6C6C6',
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    labelCategory: {
+        fontSize: 12,
+        color: '#C6C6C6',
+        marginRight: 10
+    },
+    iconDown: {
+        width: 15,
+        height: 7
+    },
+    selectedCategory: {
+        height: 28,
+        backgroundColor: '#C6C6C6',
+        justifyContent: 'center',
+        paddingHorizontal: 15,
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
+        borderWidth: 1,
+        borderColor: '#C6C6C6',
+    },
+    category: {
+        color: '#858585'
+    },
     iconClose: {
         width: 28,
         height: 28
     },
     textSearch: {
         fontSize: 20,
-        marginTop: 10,
-        color: '#777474',
-        marginLeft: 16,
+        color: '#3C95FF',
         zIndex: -1,
+    },
+    boxPaintResults: {
+        flex: 1,
+        paddingTop: 20,
+        paddingBottom: 30,
+        flexDirection: 'row'
     },
     staidSearch: {
         position: 'absolute',
         bottom: 0,
         right: 0,
         width: '100%',
-        height: 260,
+        height: 240,
         zIndex: -2,
         borderBottomRightRadius: 28,
         borderBottomLeftRadius: 28

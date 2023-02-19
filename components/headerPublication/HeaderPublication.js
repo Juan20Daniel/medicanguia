@@ -8,13 +8,7 @@ const HeaderPublication = ({ item }) => {
                     style={styles.nameclient} 
                     dataSet={{media:ids.nameclient}}
                 >
-                        {item.name} {item.firstname}
-                </Text>
-                <Text 
-                    style={styles.nameclient} 
-                    dataSet={{media:ids.nameclient}}
-                >
-                    {item.lastname}
+                    {item.name}
                 </Text>
             </View>
             <Pressable style={styles.btnSavePublication}>

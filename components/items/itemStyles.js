@@ -20,21 +20,13 @@ export const { ids, styles } = StyleSheet.create({
         marginLeft: 15,
         color: "#212121"
     },
-    valueExperience: {
-        marginTop: 10,
-        color: "#484444"
-    },
     ul: {
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center'
     },
-    point: {
-        position: 'relative',
-        top: -8,
-        fontSize: 25,
-    },
     valueExperiences: {
-        marginLeft: 5
-    }
+        color: "#484444",
+        marginLeft: 20
+    },
 });

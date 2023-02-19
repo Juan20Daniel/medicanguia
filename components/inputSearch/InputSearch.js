@@ -1,7 +1,7 @@
 import { View, TextInput, Image } from 'react-native';
 import { ids, styles } from './inputStyles';
 
-const InputSearch = () => {
+const InputSearch = ({ valueToSearch, setValueToSearch }) => {
     return (
         <View style={styles.inputSearch}>
             <View style={styles.boxIconSearch}>
@@ -15,6 +15,8 @@ const InputSearch = () => {
                 style={styles.input} 
                 keyboardType='text' 
                 placeholder='Ingresa un nombre'
+                onChangeText={setValueToSearch}
+                value={valueToSearch}
             />
         </View>
     );

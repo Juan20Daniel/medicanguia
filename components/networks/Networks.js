@@ -2,6 +2,24 @@ import { View, Text, ScrollView } from 'react-native';
 import Network from '../network/Network';
 import { ids, styles } from './networksStyles';
 import TitlesMoreInfo from '../titlesMoreInfo/TitlesMoreInfo';
+const iconNetworks = {
+    "Facebook": {
+        "true":require('../../assets/iconFacebook.png'),
+        "false":require('../../assets/iconWhatBlue.png'),
+    },
+    "Instagram": {
+        "true":require('../../assets/iconInstagram.png'),
+        "false":require('../../assets/iconInstagBlue.png')
+    },
+    "Google maps": {
+        "true":require('../../assets/iconUbiation.png'),
+        "false":require('../../assets/iconUbicaBlue.png')
+    },
+    "Whatsapp": {
+        "true":require('../../assets/iconWhatsapp.png'),
+        "false":require('../../assets/iconWhatBlue.png')
+    },
+}
 const Networks = ({ networks, colorScheme }) => {
     return (
         <View style={styles.networcks}>
@@ -14,8 +32,8 @@ const Networks = ({ networks, colorScheme }) => {
                                 key={network.idNetwork}
                                 colorScheme={colorScheme}
                                 active={network.active}
-                                iconNetwork={network.icon}
-                                to={network.to}
+                                iconNetwork={iconNetworks[`${network.name}`][`${network.active}`]}
+                                to={network.link}
                                 name={network.name}
                             />
                         );

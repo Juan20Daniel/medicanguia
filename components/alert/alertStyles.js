@@ -7,14 +7,14 @@ export const { ids, styles } = StyleSheet.create({
     boxPosition: {
         position: 'relative',
         width: '100%',
-        minHeight: 700,
+        minHeight: 600,
     },
     content: {
         position: 'absolute',
         bottom: 0,
         backgroundColor: '#fff',
         width: '100%',
-        minHeight: 100,
+        minHeight: 200,
         alignItems: 'center',
         padding: 10
     },

@@ -16,7 +16,8 @@ export const { ids, styles } = StyleSheet.create({
         color: '#797575',
         textAlign: 'center',
         marginTop: 89,
-        fontSize: 12
+        fontSize: 12,
+        marginBottom: 20
     },
     box_spinner: {
         marginTop: 34,

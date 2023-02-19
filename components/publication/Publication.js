@@ -4,6 +4,7 @@ import HeaderPublication from '../headerPublication/HeaderPublication';
 import Profetion from '../profetion/Profetion';
 import { useDispatch } from 'react-redux';
 import { getMoreInfo } from '../../redux/medicanSlice';
+import  { resetDate } from '../../functions/functions';
 const Publication = ({ item, colorSchema, navigation }) => {
     const dispatch = useDispatch();
     const goToMoreInfo = () => {
@@ -17,7 +18,7 @@ const Publication = ({ item, colorSchema, navigation }) => {
         >
             <View style={styles.boxImgPublication} dataSet={{media:ids.boxImgPublication}}>
                 <Image
-                    source={item.img}
+                    source={`http://localhost:3000/${item.url}`}
                     style={styles.imgPublication}
                     resizeMode="cover"
                 />
@@ -55,7 +56,7 @@ const Publication = ({ item, colorSchema, navigation }) => {
                 </Text>
                 <View style={styles.footerPublication}>
                     <Text style={styles.datePublication} dataSet={{media:ids.datePublication}}>
-                        Fecha de publicación: {item.dataPublicate}
+                        Fecha de publicación: {resetDate(item.dataPublicate)}
                     </Text>
                     <View style={styles.boxComents}>
                         <Image

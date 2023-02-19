@@ -5,7 +5,7 @@ import { A } from '@expo/html-elements';
 const Network = ({colorScheme, active, iconNetwork, to, name }) => {
     const [ color, setColor ] = useState();
     useEffect(() => {
-        if(active === true) {
+        if(active === "true") {
             setColor("#3C95FF");
         } else {
             if(colorScheme === "dark") {
@@ -22,8 +22,8 @@ const Network = ({colorScheme, active, iconNetwork, to, name }) => {
                 style={styles.iconNework}
                 resizeMode="contain"
             />
-            <Text style={{...styles.nameNewtwork, color:active ? "#fff" : "#3C95FF"}}>
-            <A href={to}>{name}</A>
+            <Text style={{...styles.nameNewtwork, color:active === "true" ? "#fff" : "#3C95FF"}}>
+                <A href={to}>{name}</A>
             </Text>
         </View>
     );

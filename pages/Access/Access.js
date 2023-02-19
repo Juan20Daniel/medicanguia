@@ -7,10 +7,13 @@ import useGetHeight from '../../hooks/useGetHeight';
 import InputGroup from '../../components/inputGroup/InputGroup';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux/medicanSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { verificCamps, decodeToken } from '../../functions/functions';
+import { verificCamps, decodeToken, saveTokenLS } from '../../functions/functions';
 import Alert from '../../components/alert/Alert';
 import { useApi } from '../../hooks/useApi';
+const errorsCamps = {
+    message:'Hay un problema con la información ingresada en alguno de los campos.',
+    otherMessage:'Verifica que la información este bien escrita y con la estrura correcta.'
+}
 const Access = ({ route, navigation }) => {
     const [ name, setName ] =  useState('');
     const [ email, setEmail ] =  useState('');
@@ -24,33 +27,59 @@ const Access = ({ route, navigation }) => {
     let { requestHTTP, response, isLoading, err } = useApi();
     useEffect(() => {
         if(response && !err) {
-            saveToken({token:response.token, refreshToken:response.refreshToken});
+            saveTokenLS({token:response.token, refreshToken:response.refreshToken});
             dispatch(setToken(decodeToken(response.token)));
             navigation.navigate('Menu');
         }
-        if(err) {
-            console.log("Ocurrio un error")
+        if(err && screen === "Sigin") {
+            const valuesAlert = {
+                message:"Hubo un problema al crear la cuenta.",
+                otherMessage:response.email+' '+response.message+', favor de colocar otro.'
+            }
+            showAlert(valuesAlert);
+        }
+        if(err && screen === "login") {
+            const valuesAlert = {
+                message:"Hubo un problema al iniciar sesión.",
+                otherMessage:response.message
+            }
+            showAlert(valuesAlert);
         }
     },[response]);
+    const showAlert = (valuesAlert) => {
+        setAlert({ 
+            visible:true, 
+            message:valuesAlert.message,
+            otherMessage:valuesAlert.otherMessage
+        })
+    }
     const out = () =>  navigation.navigate('Menu');
     const access = () => {
-        const resultVerify = verificCamps({name, email, password});
-        setValidCamps(resultVerify);
-        if(resultVerify.name === "red" || 
-        resultVerify.email === "red" ||
-        resultVerify.password === "red") {
-            setAlert({ 
-                visible:true, 
-                message:'Hay un problema con la información ingresada en alguno de los campos.',
-                otherMessage:'Verifica que la información este bien escrita y con la estrura correcta.'
-            });
+        if(screen === "Sigin") {
+            const { camps, invalidCamps } = verificCamps({name, email, password});
+            sigin(camps, invalidCamps);
+        }
+        if(screen === "login") {
+            const { camps, invalidCamps } = verificCamps({email, password});
+            login(camps, invalidCamps);
+        };
+    }
+    const login = (camps, invalidCamps) => {
+        setValidCamps(camps);
+        if(invalidCamps.length !== 0) {
+            showAlert(errorsCamps);
+            return false;
+        }
+        requestHTTP('POST','http://localhost:3000/api/init-session',{email, password});
+    }
+    const sigin = (camps, invalidCamps) => {
+        setValidCamps(camps);
+        if(invalidCamps.length !== 0) {
+            showAlert(errorsCamps);
             return false;
         }
         requestHTTP('POST','http://localhost:3000/api/create-users',{name, email, password})
-    }
-    const saveToken = async (data) => {
-        await AsyncStorage.setItem('token', JSON.stringify(data));
-    }
+    } 
     const goTo = screen => {
         if(screen === "login"){
             setScreen("Sigin");
@@ -123,7 +152,7 @@ const Access = ({ route, navigation }) => {
                     </Pressable>
                 </View>
             </LayoutAccess>
-            <Alert alert={alert} setAlert={setAlert} height={valueHeight}>
+            <Alert alert={alert} setAlert={setAlert} height={valueHeight} showIcon={true}>
                 {alert.otherMessage != '' &&
                     <View style={styles.boxInfoHelp}>
                         <Text style={styles.titleInfoHelp}>{alert.otherMessage}</Text>
